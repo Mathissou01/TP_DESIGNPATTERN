@@ -143,7 +143,6 @@ assignTasksToUsers(tasks, users);
 
 const decorator1 = new CustomNotificationDecoratorA(publisherTask);
 const decorator2 = new CustomNotificationConcreteDecoratorB(decorator1);
-console.log(JSON.stringify(decorator2));
 
 // Exécution du clientCode
 clientCode(decorator2);

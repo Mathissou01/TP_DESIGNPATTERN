@@ -17,8 +17,8 @@
 <li><a href="task.Task.html">Task</a></li></ul>
 <h1>Interface Task</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>The base Component interface defines operations that can be altered by
-decorators.</p>
+<div class="tsd-comment tsd-typography"><p>L&#39;interface Notifier étend CustomNotifier et ajoute une méthode sendTasks
+pour envoyer des tâches.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -34,7 +34,7 @@ decorators.</p>
 <li><a href="../classes/task.PersonnalTask.html" class="tsd-signature-type tsd-kind-class">PersonnalTask</a></li>
 <li><a href="../classes/task.ProjectTask.html" class="tsd-signature-type tsd-kind-class">ProjectTask</a></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L3">task.ts:3</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L3">task.ts:3</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -58,12 +58,12 @@ decorators.</p>
 <h3 class="tsd-anchor-link"><span>description</span><a href="#description" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L5">task.ts:5</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L5">task.ts:5</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="title" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>title</span><a href="#title" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">title</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L4">task.ts:4</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L4">task.ts:4</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="getDescription" class="tsd-anchor"></a>
@@ -71,45 +71,65 @@ decorators.</p>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="getDescription.getDescription-1"><span class="tsd-kind-call-signature">get<wbr/>Description</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#getDescription.getDescription-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>Récupère la description de la tâche.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><p>La description de la tâche.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L7">task.ts:7</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L17">task.ts:17</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="getTitle" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get<wbr/>Title</span><a href="#getTitle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="getTitle.getTitle-1"><span class="tsd-kind-call-signature">get<wbr/>Title</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#getTitle.getTitle-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>Récupère le titre de la tâche.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><p>Le titre de la tâche.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L6">task.ts:6</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L11">task.ts:11</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="operation" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>operation</span><a href="#operation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="operation.operation-1"><span class="tsd-kind-call-signature">operation</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">text</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#operation.operation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Effectue une opération spécifique à la tâche.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">text</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">text</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>Le texte de l&#39;opération.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Overrides <a href="unionManager-1.Notifier.html">Notifier</a>.<a href="unionManager-1.Notifier.html#operation">operation</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L9">task.ts:9</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L29">task.ts:29</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="sendTasks" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>send<wbr/>Tasks</span><a href="#sendTasks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="sendTasks.sendTasks-1"><span class="tsd-kind-call-signature">send<wbr/>Tasks</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">tasks</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#sendTasks.sendTasks-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Envoie les tâches à traiter.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">tasks</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">tasks</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>Les tâches à envoyer.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Overrides <a href="unionManager-1.Notifier.html">Notifier</a>.<a href="unionManager-1.Notifier.html#sendTasks">sendTasks</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/86755e9/src/task.ts#L8">task.ts:8</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/Mathissou01/TP_DESIGNPATTERN/blob/a260b55/src/task.ts#L23">task.ts:23</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
