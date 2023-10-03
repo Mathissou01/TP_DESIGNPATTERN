@@ -6,6 +6,7 @@ export interface Task extends Notifier {
   getTitle(): string;
   getDescription(): void;
   sendTasks(tasks: string): void;
+  operation(text: string): void;
 }
 
 export class ProjectTask implements Task {
@@ -30,7 +31,7 @@ export class ProjectTask implements Task {
     console.log(`received ${task}`);
   }
   operation(): string {
-    return this.component.operation();
+    return this.component.operation("test");
   }
 }
 
@@ -56,7 +57,7 @@ export class PersonnalTask implements Task {
     console.log(`received ${task}`);
   }
   operation(): string {
-    return this.component.operation();
+    return this.component.operation("test");
   }
 }
 
@@ -82,7 +83,7 @@ export class ImportantTask implements Task {
     console.log(`received ${task}`);
   }
   operation(): string {
-    return this.component.operation();
+    return this.component.operation("test");
   }
 }
 
@@ -102,8 +103,11 @@ class NotifierTask {
   writeNotifier(tasks: string) {
     this.notifier.forEach((notifier) => notifier.sendTasks(tasks));
   }
-  operation(): string {
-    return this.component.operation();
+
+  operation(text: string) {
+    if (this.component?.operation) {
+      return this.component.operation(text);
+    }
   }
 }
 

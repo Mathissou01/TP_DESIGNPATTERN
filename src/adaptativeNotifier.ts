@@ -5,7 +5,7 @@ import { Notifier } from "./unionManager";
  * decorators.
  */
 export interface CustomNotifier {
-  operation(): string;
+  operation(text: string): void;
 }
 /**
  * The base Decorator class follows the same interface as the other components.
@@ -24,8 +24,8 @@ export class Decorator implements CustomNotifier {
   /**
    * The Decorator delegates all work to the wrapped component.
    */
-  public operation(): string {
-    return this.component.operation();
+  public operation(text: string) {
+    return this.component.operation("test");
   }
 }
 
@@ -34,12 +34,14 @@ export class Decorator implements CustomNotifier {
  */
 export class CustomNotificationDecoratorA extends Decorator {
   public operation(): string {
-    return `ConcreteDecoratorA(${super.operation()})`;
+    return `ConcreteDecoratorA(${super.operation("test")})`;
   }
 }
 
 export class CustomNotificationConcreteDecoratorB extends Decorator {
   public operation(): string {
-    return `ConcreteDecoratorB(${super.operation()})`;
+    const result = this.component.operation("test"); // Obtenir la valeur de base
+    const chainePersonnalisable = "Votre chaîne personnalisable ici";
+    return result + chainePersonnalisable; // Concaténer la valeur de base avec la chaîne personnalisable
   }
 }

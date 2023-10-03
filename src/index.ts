@@ -1,12 +1,12 @@
 /**
- * Import des fonctions de unionManager
- * @module "./unionManager";
+ * Module contenant les fonctions d'unionManager.
+ * @module unionManager
  */
 import { UnionNotifierTask } from "./unionManager";
 
 /**
- * Import des fonctions de création de tâches
- * @module "./task"
+ * Module contenant les fonctions de création de tâches.
+ * @module task
  */
 
 import {
@@ -18,8 +18,8 @@ import {
 } from "./task";
 
 /**
- * Import des fonctions de création des rôles
- * @module "./worker"
+ * Module contenant les fonctions de création des rôles de travailleurs.
+ * @module worker
  */
 
 import { Worker, JuniorDev, SeniorDev, Techlead } from "./worker";
@@ -28,78 +28,130 @@ import {
   CustomNotificationConcreteDecoratorB,
 } from "./adaptativeNotifier";
 
-// !!!
-console.log(
-  "\u001b[1;41m",
-  "\x1b[34m",
-  "{====== LANCEMENT DE PROCESS ======}",
-  "\u001b[0m"
-);
-// !!!
-
-// !!!
-console.log(
-  "\u001b[1;42m",
-  "\x1b[34m",
-  "{====== CREATION DES TACHES ======}",
-  "\u001b[0m"
-);
-// !!!
-// Création des tâches trier celon leur importances
-const tasks: Task[] = [
-  new ProjectTask("SUEZ", "Desciption_SUEZ"),
-  new ProjectTask("SUEZ SECOND", "Desciption_SUEZ2"),
-  new PersonnalTask("COURSES", "Desciption_COURSES"),
-  new PersonnalTask("COURSES SECOND", "Desciption_COURSES2"),
-  new ImportantTask("MAISON", "Desciption_MAISON"),
-  new ImportantTask("MAISON SECOND", "Desciption_MAISON2"),
-];
-
-// !!!
-console.log(
-  "\u001b[1;42m",
-  "\x1b[34m",
-  "{====== CREATION DES UTILISATEURS ======}",
-  "\u001b[0m"
-);
-// !!!
-
-const users: Worker[] = [
-  new JuniorDev("John", "Doe"),
-  new JuniorDev("Florian", "Rey"),
-  new SeniorDev("Patrick", "Jean"),
-  new SeniorDev("Michel", "Operation"),
-  new Techlead("Mathis", "Alban"),
-  new Techlead("Audran", "Massacry"),
-];
-
-// !!!
-console.log(
-  "\u001b[1;42m",
-  "\x1b[34m",
-  "{====== ATTRIBUTION DES TACHES ======}",
-  "\u001b[0m"
-);
-// !!!
-tasks.forEach((task, index) => {
-  const userIndex = Math.min(index, users.length - 1);
-  const user = users[userIndex];
-  publisherTask.addNotifier(
-    new UnionNotifierTask(task.getTitle()),
-    user.getFullName(),
-    user.getPost()
+/**
+ * Fonction de lancement du processus.
+ */
+function launchProcess() {
+  // Affichage d'un message de lancement de processus
+  console.log(
+    "\u001b[1;41m",
+    "\x1b[34m",
+    "{====== LANCEMENT DE PROCESS ======}",
+    "\u001b[0m"
   );
-  task.getDescription();
-});
+}
+
+/**
+ * Fonction de création des tâches triées selon leur importance.
+ * @returns {Task[]} Tableau de tâches créées.
+ */
+function createTasks(): Task[] {
+  const tasks: Task[] = [
+    new ProjectTask("SUEZ", "Description_SUEZ"),
+    new ProjectTask("SUEZ SECOND", "Description_SUEZ2"),
+    new PersonnalTask("COURSES", "Description_COURSES"),
+    new PersonnalTask("COURSES SECOND", "Description_COURSES2"),
+    new ImportantTask("MAISON", "Description_MAISON"),
+    new ImportantTask("MAISON SECOND", "Description_MAISON2"),
+  ];
+
+  // Affichage du nombre de tâches créées
+  console.log(
+    "\u001b[1;36m",
+    "\x1b[34m",
+    `{====== ${tasks.length} tâches créées ======}`,
+    "\u001b[0m"
+  );
+
+  return tasks;
+}
+
+/**
+ * Fonction de création des utilisateurs.
+ * @returns {Worker[]} Tableau d'utilisateurs créés.
+ */
+function createUsers(): Worker[] {
+  const users: Worker[] = [
+    new JuniorDev("John", "Doe"),
+    new JuniorDev("Florian", "Rey"),
+    new SeniorDev("Patrick", "Jean"),
+    new SeniorDev("Michel", "Operation"),
+    new Techlead("Mathis", "Alban"),
+    new Techlead("Audran", "Massacry"),
+  ];
+
+  // Affichage du nombre d'utilisateurs créés
+  console.log(
+    "\u001b[1;36m",
+    "\x1b[34m",
+    `{<===== ${users.length} utilisateurs créés ======}`,
+    "\u001b[0m"
+  );
+
+  return users;
+}
+
+/**
+ * Fonction d'attribution des tâches aux utilisateurs.
+ * @param {Task[]} tasks - Tableau de tâches à attribuer.
+ * @param {Worker[]} users - Tableau d'utilisateurs auxquels attribuer les tâches.
+ */
+function assignTasksToUsers(tasks: Task[], users: Worker[]) {
+  // Affichage d'un message d'attribution des tâches aux utilisateurs
+  console.log(
+    "\u001b[1;42m",
+    "\x1b[34m",
+    "{====== ATTRIBUTION DES TACHES ======}",
+    "\u001b[0m"
+  );
+
+  tasks.forEach((task, index) => {
+    const userIndex = Math.min(index, users.length - 1);
+    const user = users[userIndex];
+    publisherTask.addNotifier(
+      new UnionNotifierTask(task.getTitle()),
+      user.getFullName(),
+      user.getPost()
+    );
+    task.getDescription();
+  });
+}
+
+/**
+ * Fonction principale du client.
+ * @param {any} component - Composant de notification.
+ */
+function clientCode(component: any) {
+  // ...
+
+  console.log(`RESULT: ${component.operation()}`);
+
+  // ...
+}
+
+// Lancement du processus
+launchProcess();
+
+// Création des tâches
+const tasks = createTasks();
+
+// Création des utilisateurs
+const users = createUsers();
+
+// Attribution des tâches aux utilisateurs
+assignTasksToUsers(tasks, users);
 
 const decorator1 = new CustomNotificationDecoratorA(publisherTask);
 const decorator2 = new CustomNotificationConcreteDecoratorB(decorator1);
+console.log(JSON.stringify(decorator2));
 
-// !!!
+// Exécution du clientCode
+clientCode(decorator2);
+
+// Affichage d'un message de fin de processus
 console.log(
   "\u001b[1;41m",
   "\x1b[34m",
   "{====== FIN DE PROCESS ======}",
   "\u001b[0m"
 );
-// !!!
