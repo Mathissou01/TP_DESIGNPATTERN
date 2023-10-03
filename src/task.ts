@@ -11,6 +11,7 @@ export interface Task extends Notifier {
 export class ProjectTask implements Task {
   title: string;
   description: string;
+  component: any;
 
   constructor(title: string, description: string) {
     this.title = title;
@@ -27,12 +28,16 @@ export class ProjectTask implements Task {
 
   sendTasks(task: string): void {
     console.log(`received ${task}`);
+  }
+  operation(): string {
+    return this.component.operation();
   }
 }
 
 export class PersonnalTask implements Task {
   title: string;
   description: string;
+  component: any;
 
   constructor(title: string, description: string) {
     this.title = title;
@@ -49,12 +54,16 @@ export class PersonnalTask implements Task {
 
   sendTasks(task: string): void {
     console.log(`received ${task}`);
+  }
+  operation(): string {
+    return this.component.operation();
   }
 }
 
 export class ImportantTask implements Task {
   title: string;
   description: string;
+  component: any;
 
   constructor(title: string, description: string) {
     this.title = title;
@@ -72,22 +81,29 @@ export class ImportantTask implements Task {
   sendTasks(task: string): void {
     console.log(`received ${task}`);
   }
+  operation(): string {
+    return this.component.operation();
+  }
 }
 
 class NotifierTask {
   notifier: Notifier[];
+  component: any;
 
   constructor() {
     this.notifier = [];
   }
 
-  addNotifier(notifier: Notifier, workerName: string) {
-    console.log(`Task: Added to ${workerName}`);
+  addNotifier(notifier: Notifier, workerName: string, post: string) {
+    console.log(`Task '${notifier["name"]}' added to '${post}' ${workerName}`);
     this.notifier.push(notifier);
   }
 
   writeNotifier(tasks: string) {
     this.notifier.forEach((notifier) => notifier.sendTasks(tasks));
+  }
+  operation(): string {
+    return this.component.operation();
   }
 }
 

@@ -1,16 +1,14 @@
 /**
- * Import des function de unionManager
- *
- * Specify this is a module comment and rename it to my-module:
- * @module my-module
+ * Import des fonctions de unionManager
+ * @module "./unionManager";
  */
-import { NotificationPublisher, UnionNotifierTask } from "./unionManager";
+import { UnionNotifierTask } from "./unionManager";
+
 /**
- * Import des functions de création de tâches
- *
- * Specify this is a module comment and rename it to my-module:
- * @module my-module
+ * Import des fonctions de création de tâches
+ * @module "./task"
  */
+
 import {
   Task,
   ProjectTask,
@@ -18,7 +16,17 @@ import {
   ImportantTask,
   publisherTask,
 } from "./task";
-import { JuniorDev } from "./worker";
+
+/**
+ * Import des fonctions de création des rôles
+ * @module "./worker"
+ */
+
+import { Worker, JuniorDev, SeniorDev, Techlead } from "./worker";
+import {
+  CustomNotificationDecoratorA,
+  CustomNotificationConcreteDecoratorB,
+} from "./adaptativeNotifier";
 
 // !!!
 console.log(
@@ -28,12 +36,6 @@ console.log(
   "\u001b[0m"
 );
 // !!!
-// Création des tâches trier celon leur importances
-const tasks: Task[] = [
-  new ProjectTask("SUEZ", "Desciption_SUEZ"),
-  new PersonnalTask("COURSES", "Desciption_COURSES"),
-  new ImportantTask("MAISON", "Desciption_MAISON"),
-];
 
 // !!!
 console.log(
@@ -43,16 +45,55 @@ console.log(
   "\u001b[0m"
 );
 // !!!
+// Création des tâches trier celon leur importances
+const tasks: Task[] = [
+  new ProjectTask("SUEZ", "Desciption_SUEZ"),
+  new ProjectTask("SUEZ SECOND", "Desciption_SUEZ2"),
+  new PersonnalTask("COURSES", "Desciption_COURSES"),
+  new PersonnalTask("COURSES SECOND", "Desciption_COURSES2"),
+  new ImportantTask("MAISON", "Desciption_MAISON"),
+  new ImportantTask("MAISON SECOND", "Desciption_MAISON2"),
+];
 
-tasks.forEach((task) => {
-  task.getTitle();
-  task.getDescription();
-  NotificationPublisher.addNotifier(new UnionNotifierTask(task.getTitle()));
+// !!!
+console.log(
+  "\u001b[1;42m",
+  "\x1b[34m",
+  "{====== CREATION DES UTILISATEURS ======}",
+  "\u001b[0m"
+);
+// !!!
+
+const users: Worker[] = [
+  new JuniorDev("John", "Doe"),
+  new JuniorDev("Florian", "Rey"),
+  new SeniorDev("Patrick", "Jean"),
+  new SeniorDev("Michel", "Operation"),
+  new Techlead("Mathis", "Alban"),
+  new Techlead("Audran", "Massacry"),
+];
+
+// !!!
+console.log(
+  "\u001b[1;42m",
+  "\x1b[34m",
+  "{====== ATTRIBUTION DES TACHES ======}",
+  "\u001b[0m"
+);
+// !!!
+tasks.forEach((task, index) => {
+  const userIndex = Math.min(index, users.length - 1);
+  const user = users[userIndex];
   publisherTask.addNotifier(
-    new ImportantTask("test", "test"),
-    JuniorDev.getFullName()
+    new UnionNotifierTask(task.getTitle()),
+    user.getFullName(),
+    user.getPost()
   );
+  task.getDescription();
 });
+
+const decorator1 = new CustomNotificationDecoratorA(publisherTask);
+const decorator2 = new CustomNotificationConcreteDecoratorB(decorator1);
 
 // !!!
 console.log(

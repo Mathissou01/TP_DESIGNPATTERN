@@ -7,5 +7,10 @@
     "sourceMap": true,
     "outDir": "dist"
   },
+  "typedocOptions": {
+    "entryPoints": ["src"],
+    "entryPointStrategy": "expand",
+    "out": "docs"
+  },
   "lib": ["es2015"]
 }

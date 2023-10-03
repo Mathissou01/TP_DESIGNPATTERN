@@ -1,26 +1,33 @@
-export interface Notifier {
+import { CustomNotifier } from "./adaptativeNotifier";
+
+export interface Notifier extends CustomNotifier {
   sendTasks(tasks: string): void;
 }
 
 class NotifierTask {
   notifier: Notifier[];
+  component: any;
 
   constructor() {
     this.notifier = [];
   }
 
   addNotifier(notifier: Notifier) {
-    console.log("Task: Added to Notifier");
+    console.log(`Task: Add task '${notifier["name"]}' to Notifier`);
     this.notifier.push(notifier);
   }
 
   writeNotifier(tasks: string) {
     this.notifier.forEach((notifier) => notifier.sendTasks(tasks));
   }
+  operation(): string {
+    return this.component.operation();
+  }
 }
 
 export class UnionNotifierTask implements Notifier {
   name: string;
+  component: any;
 
   constructor(name: string) {
     this.name = name;
@@ -29,18 +36,9 @@ export class UnionNotifierTask implements Notifier {
   sendTasks(tasks: string) {
     console.log(`${this.name} received ${tasks}`);
   }
+  operation(): string {
+    return this.component.operation();
+  }
 }
-
-const publisher = new NotifierTask();
-
-/**
- * @param publisher - Créer la notification de chaque tâches
- * @param - the second number
- * @returns The sum of `a` and `b`
- */
-publisher.addNotifier(new UnionNotifierTask("Jacques"));
-publisher.addNotifier(new UnionNotifierTask("Jacques2"));
-publisher.addNotifier(new UnionNotifierTask("Jacques3"));
-publisher.addNotifier(new UnionNotifierTask("Jacques4"));
 
 export const NotificationPublisher = new NotifierTask();

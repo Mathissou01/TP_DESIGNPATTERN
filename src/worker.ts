@@ -7,17 +7,15 @@ export interface Worker {
 }
 
 export class JuniorDev implements Worker {
-  static getFullName(): string {
-    throw new Error("Method not implemented.");
-  }
   firstname: string;
   lastname: string;
   post: string;
+  static getPost: any;
 
-  constructor(firstname: string, lastname: string, post: string) {
+  constructor(firstname: string, lastname: string) {
     this.firstname = firstname;
     this.lastname = lastname;
-    this.post = post;
+    this.post = "Dev junior";
   }
 
   getFullName(): string {
@@ -29,15 +27,15 @@ export class JuniorDev implements Worker {
   }
 }
 
-class SeniorDev implements Worker {
+export class SeniorDev implements Worker {
   firstname: string;
   lastname: string;
   post: string;
 
-  constructor(firstname: string, lastname: string, post: string) {
+  constructor(firstname: string, lastname: string) {
     this.firstname = firstname;
     this.lastname = lastname;
-    this.post = post;
+    this.post = "Dev senior";
   }
 
   getFullName(): string {
@@ -49,15 +47,15 @@ class SeniorDev implements Worker {
   }
 }
 
-class Techlead implements Worker {
+export class Techlead implements Worker {
   firstname: string;
   lastname: string;
   post: string;
 
-  constructor(firstname: string, lastname: string, post: string) {
+  constructor(firstname: string, lastname: string) {
     this.firstname = firstname;
     this.lastname = lastname;
-    this.post = post;
+    this.post = "Techlead";
   }
 
   getFullName(): string {
